@@ -1,0 +1,51 @@
+.btn-link {
+  border: none;
+  background: none;
+  margin: 2rem 0;
+}
+
+.btn-link span {
+  padding-bottom: 7px;
+  letter-spacing: 2px;
+  font-size: 14px;
+  padding-right: 10px;
+  text-transform: uppercase;
+}
+
+.btn-link .icon {
+  transform: translateX(-8px);
+  transition: all 0.3s ease;
+  color: var(--hotpink);
+}
+
+.btn-link:hover .icon {
+  transform: translateX(0);
+}
+
+.btn-link:active .icon {
+  transform: scale(0.9);
+}
+
+.hover-underline-animation {
+  position: relative;
+  color: var(--hotpink);
+  padding-bottom: 20px;
+}
+
+.hover-underline-animation::after {
+  content: "";
+  position: absolute;
+  width: 100%;
+  transform: scaleX(0);
+  height: 2px;
+  bottom: 0;
+  left: 0;
+  background-color: var(--hotpink);
+  transform-origin: bottom right;
+  transition: transform 0.25s ease-out;
+}
+
+.btn-link:hover .hover-underline-animation::after {
+  transform: scaleX(1);
+  transform-origin: bottom left;
+}

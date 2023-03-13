@@ -1,0 +1,58 @@
+.services {
+  margin-block: 3rem;
+  max-height: max-content;
+}
+.services-content {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(48%, 1fr));
+  gap: 2rem;
+  margin-block: 3rem;
+}
+.service-content-left {
+  padding: 1rem;
+}
+.service-content-left figure img {
+  border-radius: 1rem;
+  -webkit-border-radius: 1rem;
+  -moz-border-radius: 1rem;
+  -ms-border-radius: 1rem;
+  -o-border-radius: 1rem;
+}
+.service-content-right {
+  font-weight: 200;
+  line-height: 1.5;
+  text-align: justify;
+}
+.service-content-right h2 {
+  margin-bottom: 1.5rem;
+  display: flex;
+  align-items: center;
+  justify-content: flex-start;
+}
+.service-content-right h2 span {
+  padding: 5px 10px;
+  display: grid;
+  place-items: center;
+  border-radius: 5px;
+  -webkit-border-radius: 5px;
+  -moz-border-radius: 5px;
+  -ms-border-radius: 5px;
+  -o-border-radius: 5px;
+  color: var(--hotpink);
+}
+.service-content-right p {
+  opacity: 0.7;
+  letter-spacing: 0.5px;
+  margin-bottom: 2rem;
+  background-color: rgba(255, 255, 255, 0.2);
+  padding: 2rem;
+  border-radius: 0.5rem;
+  -webkit-border-radius: 0.5rem;
+  -moz-border-radius: 0.5rem;
+  -ms-border-radius: 0.5rem;
+  -o-border-radius: 0.5rem;
+}
+.service-content-right .btn.btn-sm {
+  padding: 0.5rem 1.5rem;
+  font-weight: normal;
+}

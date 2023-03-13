@@ -1,0 +1,45 @@
+.testimonial-item {
+  display: flex;
+  flex-direction: column;
+  width: minmax(20rem, 100%);
+
+  margin-inline: 1rem;
+}
+.item-header {
+  display: grid;
+  place-items: center;
+  background-image: var(--bg-gradient-1);
+  padding: 1rem 0;
+  border-top-left-radius: 1rem;
+  border-top-right-radius: 1rem;
+}
+.item-header figure img {
+  width: 150px;
+  height: 150px;
+  border-radius: 50%;
+  -webkit-border-radius: 50%;
+  -moz-border-radius: 50%;
+  -ms-border-radius: 50%;
+  -o-border-radius: 50%;
+  object-fit: cover;
+}
+.item-content {
+  padding: 1rem;
+  text-align: center;
+  background-color: rgba(255, 255, 255, 0.2);
+}
+.item-content h4.title {
+  margin-bottom: 1.5rem;
+}
+.item-content p {
+  line-height: 1.5;
+  font-size: small;
+  font-weight: 200;
+  letter-spacing: 0.5px;
+}
+.item-content p::before {
+  content: open-quote;
+}
+.item-content p::after {
+  content: close-quote;
+}

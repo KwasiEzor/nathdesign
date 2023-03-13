@@ -1,0 +1,32 @@
+.slide .container {
+  max-width: var(--screen-max);
+  /* width: var(--screen-max); */
+  margin-inline: auto;
+  padding: 2rem 3rem;
+}
+.slide {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  padding: 0 2rem;
+}
+.container {
+  padding: 2rem 0;
+}
+.container .carousel-prev,
+.container .carousel-next {
+  width: 50px;
+  height: 50px;
+  background-color: var(--hotpink);
+  border-radius: 50%;
+  color: var(--white);
+  position: absolute;
+  top: 0;
+  bottom: 0;
+  margin: auto;
+}
+.carousel-row {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}

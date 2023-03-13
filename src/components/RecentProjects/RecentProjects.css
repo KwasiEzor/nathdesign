@@ -1,0 +1,40 @@
+.recent-projects {
+  padding: 2rem;
+}
+.recent-projects-filters {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 1rem;
+  margin-bottom: 3rem;
+  flex-wrap: wrap;
+}
+.recent-projects-group {
+  padding-top: 2rem;
+}
+.recent-projects-filters .btn-filter {
+  padding: 0.5rem 1rem;
+  letter-spacing: 1px;
+}
+.recent-projects-list {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(20rem, 1fr));
+  gap: 1rem;
+  padding: 2rem 0;
+}
+
+.project-item {
+  padding: 1rem;
+  border: 2px solid rgba(255, 255, 255, 0.2);
+  border-radius: 0.5rem;
+  -webkit-border-radius: 0.5rem;
+  -moz-border-radius: 0.5rem;
+  -ms-border-radius: 0.5rem;
+  -o-border-radius: 0.5rem;
+}
+.recent-projects-footer {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  padding: 1rem;
+}

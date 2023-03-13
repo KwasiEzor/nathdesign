@@ -1,0 +1,7 @@
+.root-layout {
+  max-width: var(--screen-max);
+  margin-inline: auto;
+  display: grid;
+  grid-template-rows: auto 1fr auto;
+  min-height: 100dvh;
+}

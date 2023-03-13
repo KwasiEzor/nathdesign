@@ -1,0 +1,10 @@
+.testimonials {
+  min-height: 50dvh;
+  max-height: max-content;
+}
+.testimonials-top {
+  margin-bottom: 2rem;
+}
+.testimonials-content {
+  margin-block: 5rem;
+}

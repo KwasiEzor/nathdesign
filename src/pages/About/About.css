@@ -1,0 +1,41 @@
+.about-content {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(48%, 1fr));
+  gap: 2rem;
+  margin: 5rem 0;
+}
+.about-left {
+  padding: 5%;
+}
+.about-left .left-text {
+  display: grid;
+  grid-template-columns: 3fr auto;
+  position: relative;
+  padding-inline-start: 5rem;
+  padding-inline-end: 25rem;
+}
+@media screen and (max-width: 1090px) {
+  .about-left .left-text {
+    padding-inline: 0;
+  }
+  .about-left figure img {
+    display: none;
+  }
+}
+.about-left p {
+  background-color: var(--hotpink);
+  padding: 2rem;
+  border-radius: 1rem;
+  -webkit-border-radius: 1rem;
+  -moz-border-radius: 1rem;
+  -ms-border-radius: 1rem;
+  -o-border-radius: 1rem;
+  text-align: justify;
+}
+.about-left figure img {
+  position: absolute;
+  max-width: 20rem;
+  top: 0;
+  right: 60px;
+  bottom: 50px;
+}
