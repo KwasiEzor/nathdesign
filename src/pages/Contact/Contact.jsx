@@ -1,14 +1,43 @@
-import React from "react";
+import React, { useRef } from "react";
 import "./Contact.css";
 import Banner from "../../components/Banner/Banner";
 import ContactImg from "../../assets/img/contact-bg.jpg";
 import SectionTitle from "../../components/SectionTitle/SectionTitle";
-import { FaEnvelope, FaPenNib, FaPenAlt } from "react-icons/fa";
-import { TiMessages } from "react-icons/ti";
+import { FaEnvelope, FaPenAlt, FaUserAlt } from "react-icons/fa";
 import { RiMessage3Fill } from "react-icons/ri";
 import { motion } from "framer-motion";
 import { fadeIn } from "../../variants";
+import emailjs from "@emailjs/browser";
+import { toast, ToastContainer } from "react-toastify";
+
 const Contact = () => {
+  const contactForm = useRef();
+
+  const sendEmail = (e) => {
+    e.preventDefault();
+    emailjs
+      .sendForm(
+        import.meta.env.VITE_SERVICE_ID,
+        import.meta.env.VITE_TEMPLATE_ID,
+        contactForm.current,
+        import.meta.env.VITE_PUBLIC_KEY
+      )
+      .then(
+        (result) => {
+          console.log(result.text);
+          toast.success("Thanks for your message !", {
+            position: toast.POSITION.TOP_RIGHT,
+          });
+        },
+        (error) => {
+          console.log(error.text);
+          toast.error("Oups! Something went wrong :(", {
+            position: toast.POSITION.TOP_RIGHT,
+          });
+        }
+      );
+  };
+
   return (
     <div className="contact page">
       <Banner title={"Contact Us"} image={ContactImg} />
@@ -20,7 +49,22 @@ const Contact = () => {
           whileInView={"show"}
           className="contact-form"
         >
-          <form className="form">
+          <form className="form" ref={contactForm} onSubmit={sendEmail}>
+            <div className="form-group">
+              <label htmlFor="name">
+                <span>
+                  <FaUserAlt />
+                </span>
+                Name
+              </label>
+              <input
+                type="text"
+                name="name"
+                id="name"
+                required
+                placeholder="John Doe"
+              />
+            </div>
             <div className="form-group">
               <label htmlFor="email">
                 <span>
@@ -67,11 +111,14 @@ const Contact = () => {
               ></textarea>
             </div>
             <div className="form-group">
-              <button className="form-btn">Send Message</button>
+              <button type="submit" className="form-btn">
+                Send Message
+              </button>
             </div>
           </form>
         </motion.div>
       </section>
+      <ToastContainer />
     </div>
   );
 };

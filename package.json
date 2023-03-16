@@ -1,23 +1,25 @@
 {
-  "homepage":"https://KwasiEzor.github.io/nathdesign",
+  "homepage": "https://KwasiEzor.github.io/nathdesign",
   "name": "nathdesign",
   "private": false,
   "version": "0.0.0",
   "type": "module",
   "scripts": {
-    "predeploy":"npm run build",
-    "deploy":"gh-pages -d dist",
+    "predeploy": "npm run build",
+    "deploy": "gh-pages -d dist",
     "dev": "vite --port=3000",
     "build": "vite build",
     "preview": "vite preview"
   },
   "dependencies": {
+    "@emailjs/browser": "^3.10.0",
     "framer-motion": "^10.2.4",
     "infinite-react-carousel": "^1.2.11",
     "react": "^18.2.0",
     "react-dom": "^18.2.0",
     "react-icons": "^4.8.0",
     "react-router-dom": "^6.8.2",
+    "react-toastify": "^9.1.1",
     "react-type-animation": "^2.1.2"
   },
   "devDependencies": {
