@@ -9,7 +9,6 @@ import { motion } from "framer-motion";
 import { fadeIn } from "../../variants";
 import emailjs from "@emailjs/browser";
 import { toast, ToastContainer } from "react-toastify";
-
 const Contact = () => {
   const contactForm = useRef();
 
