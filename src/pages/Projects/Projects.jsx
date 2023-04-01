@@ -12,31 +12,72 @@ import ButtonLink from "../../components/ButtonLink/ButtonLink";
 
 import { motion } from "framer-motion";
 import { fadeIn } from "../../variants";
-
+import sanityClient from "../../client"
+import useSanity from "../../hooks/useSanity.js";
 const Projects = () => {
   const [projects, setProjects] = useState([]);
-  const [categories, setCatgories] = useState([]);
+  const [categories, setCategories] = useState([]);
   const [searchQuery, setSearchQuery] = useState("");
+  const [projectsData, setProjectsData] = useState([])
+
 
   const [currentPage, setCurrentPage] = useState(1);
   const [projectsPerPage, setProjectsPerPage] = useState(6);
-
   const lastProjectIndex = currentPage * projectsPerPage;
   const firstProjectIndex = lastProjectIndex - projectsPerPage;
 
+
+  const projectQuery = `*[_type=='project']{
+      title,
+      category->{
+      title
+      },
+      image{
+      asset->{
+        _id,
+        url
+      },
+      alt
+      }
+    }`;
+
+
   useEffect(() => {
-    setProjects(ProjectsData.slice(firstProjectIndex, lastProjectIndex));
-    setCatgories([...new Set(ProjectsData.map((project) => project.category))]);
+    sanityClient.fetch(`*[_type=='project']{
+      title,
+      category->{
+      title
+      },
+      image{
+      asset->{
+        _id,
+        url
+      },
+      alt
+      }
+    }`).then((data)=>console.log(setProjectsData(data)))
   }, []);
+
+  useEffect(()=>{
+    setProjects(projectsData.slice(firstProjectIndex, lastProjectIndex));
+},[projectsData])
+  useEffect(()=>{
+    sanityClient.fetch(`*[_type=='category']`).then((data)=>console.log(setCategories(data)))
+    //setCategories([...new Set(projectsData.map((project) => project.category))]);
+  },[])
+
+  console.log('categories',categories)
   const fetchProjectsByCategories = (category) => {
-    const filteredData = ProjectsData.filter(
-      (item) => item.category == category
+    const filteredData = projectsData.filter(
+      (item) => item.category.title === category.title
     );
     setProjects(filteredData);
+
   };
+  console.log('projects data',projectsData)
 
   const handleSearchQueries = () => {
-    const filteredProjects = ProjectsData.filter((project) =>
+    const filteredProjects = projectsData.filter((project) =>
       project.title.toLowerCase().includes(searchQuery.toLowerCase())
     );
     setProjects(filteredProjects);
@@ -73,26 +114,29 @@ const Projects = () => {
               className="btn filter-btn"
               onClick={() =>
                 setProjects(
-                  ProjectsData.slice(firstProjectIndex, lastProjectIndex)
+                  projectsData.slice(firstProjectIndex, lastProjectIndex)
                 )
               }
             >
               All
             </button>
-            {categories.map((category) => (
+            {categories.map((category, index) => (
               <button
-                key={category}
+                key={index}
                 onClick={() => fetchProjectsByCategories(category)}
                 className="btn filter-btn"
               >
-                {category}
+                {category.title}
               </button>
             ))}
           </div>
         </div>
         <div className="projects-list-group">
-          {projects.map((project) => (
-            <ProjectsCard key={project.id} item={project} />
+          {projects.map((project,index) => (
+              <>
+
+              <ProjectsCard key={index} item={project} />
+              </>
           ))}
         </div>
         <div className="projects-bottom">
@@ -100,7 +144,7 @@ const Projects = () => {
             className="btn btn-loading"
             onClick={() =>
               setProjects(
-                ProjectsData.slice(
+                projectsData.slice(
                   firstProjectIndex,
                   lastProjectIndex + projectsPerPage
                 )

@@ -20,7 +20,7 @@ export const ProjectsData = [
     },
     {
         id: 4,
-        title: "Delivroum",
+        title: "The inner wounds",
         category: "development",
         img: "./img/projects/project-4.jpg"
     },
