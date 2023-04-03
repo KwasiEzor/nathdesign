@@ -1,4 +1,4 @@
-import React from "react";
+import React, {useEffect, useState} from "react";
 import "./Services.css";
 import SectionTitle from "../SectionTitle/SectionTitle";
 import ServiceImg1 from "../../assets/img/service-img-1.jpg";
@@ -9,8 +9,24 @@ import { FaPenNib, FaChartLine, FaDraftingCompass } from "react-icons/fa";
 
 import { motion } from "framer-motion";
 import { fadeIn } from "../../variants";
-
+import client from "../../client"
 const Services = () => {
+  const [services, setServices] = useState([])
+  useEffect(()=>{
+    client.fetch(`*[_type=='service']{
+    type,
+    description,
+    image{
+      asset->{
+        _id,
+        url
+      }
+    }
+    }`)
+        .then((data)=> setServices(data))
+        .catch((error)=>console.log(`Error while fetching services data :${error}`))
+  },[])
+  console.log(services)
   return (
     <section className="services section">
       <div className="services-top">
